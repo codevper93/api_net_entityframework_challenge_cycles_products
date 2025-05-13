@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProductApi</name>
+    </assembly>
+    <members>
+        <member name="T:ProductApi.Controllers.ProductosController">
+            <summary>
+            Controlador para manejar las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre los productos.
+            </summary>
+        </member>
+        <member name="M:ProductApi.Controllers.ProductosController.#ctor(ProductApi.Data.ApplicationDbContext,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Inicializa una nueva instancia del controlador ProductosController.
+            </summary>
+            <param name="context">El contexto de base de datos.</param>
+            <param name="config">La configuración de la aplicación.</param>
+        </member>
+        <member name="M:ProductApi.Controllers.ProductosController.IsAuthorized(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Verifica si la solicitud está autorizada comparando el valor de un token en los headers.
+            </summary>
+            <param name="request">La solicitud HTTP actual.</param>
+            <returns>True si la solicitud está autorizada, de lo contrario False.</returns>
+        </member>
+        <member name="M:ProductApi.Controllers.ProductosController.GetAll">
+            <summary>
+            Obtiene todos los productos de la base de datos.
+            </summary>
+            <returns>Una lista de productos en formato JSON.</returns>
+            <response code="200">Devuelve la lista de productos.</response>
+            <response code="401">Si el usuario no está autorizado.</response>
+        </member>
+        <member name="M:ProductApi.Controllers.ProductosController.Get(System.Int32)">
+            <summary>
+            Obtiene un producto por su ID.
+            </summary>
+            <param name="id">El ID del producto.</param>
+            <returns>Un producto en formato JSON.</returns>
+            <response code="200">Devuelve el producto encontrado.</response>
+            <response code="401">Si el usuario no está autorizado.</response>
+            <response code="404">Si no se encuentra el producto con el ID dado.</response>
+        </member>
+        <member name="M:ProductApi.Controllers.ProductosController.Create(ProductApi.Models.Producto)">
+            <summary>
+            Crea un nuevo producto en la base de datos.
+            </summary>
+            <param name="producto">El objeto Producto a crear.</param>
+            <returns>Un mensaje de éxito con el ID del producto creado.</returns>
+            <response code="201">Producto creado exitosamente.</response>
+            <response code="401">Si el usuario no está autorizado para crear el producto.</response>
+        </member>
+        <member name="M:ProductApi.Controllers.ProductosController.Update(System.Int32,ProductApi.Models.Producto)">
+            <summary>
+            Actualiza un producto existente por su ID.
+            </summary>
+            <param name="id">El ID del producto a actualizar.</param>
+            <param name="producto">El objeto Producto con los nuevos valores.</param>
+            <returns>Un mensaje de éxito o error según corresponda.</returns>
+            <response code="200">Producto actualizado correctamente.</response>
+            <response code="400">Si el ID del producto no coincide con el proporcionado en la URL.</response>
+            <response code="401">Si el usuario no está autorizado para actualizar el producto.</response>
+            <response code="404">Si no se encuentra el producto con el ID dado.</response>
+        </member>
+        <member name="M:ProductApi.Controllers.ProductosController.Delete(System.Int32)">
+            <summary>
+            Elimina un producto de la base de datos por su ID.
+            </summary>
+            <param name="id">El ID del producto a eliminar.</param>
+            <returns>Un mensaje de éxito o error.</returns>
+            <response code="204">Producto eliminado correctamente.</response>
+            <response code="401">Si el usuario no está autorizado para eliminar el producto.</response>
+            <response code="404">Si no se encuentra el producto con el ID dado.</response>
+        </member>
+        <member name="M:ProductApi.Controllers.ProductosController.GetAllDapper">
+            <summary>
+            Obtiene todos los productos utilizando Dapper (alternativa a Entity Framework).
+            </summary>
+            <returns>Una lista de productos obtenidos desde la base de datos.</returns>
+            <response code="200">Devuelve la lista de productos.</response>
+            <response code="401">Si el usuario no está autorizado para acceder a esta información.</response>
+        </member>
+        <member name="T:ProductApi.Migrations.ProductsInitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:ProductApi.Migrations.ProductsInitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ProductApi.Migrations.ProductsInitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ProductApi.Migrations.ProductsInitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ProductApi.Migrations.FixPrecioPrecision">
+            <inheritdoc />
+        </member>
+        <member name="M:ProductApi.Migrations.FixPrecioPrecision.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ProductApi.Migrations.FixPrecioPrecision.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ProductApi.Migrations.FixPrecioPrecision.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
